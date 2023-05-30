@@ -11,3 +11,164 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+/* MovieCard.css style starts here */
+.movie-card-container {
+  width: 18rem;
+  margin-bottom: 20px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 300px; /* Set a minimum height for the cards */
+}
+
+
+.card-img-container {
+  flex: 1;
+}
+
+.card-img-top {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.card-body {
+  flex: 1;
+}
+
+.card-title {
+  margin-bottom: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+.card-text {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+}
+/* MovieCard.css style ends here */
+
+
+
+/* home.css style starts here */
+.genre-heading{
+background-color: brown;
+color: aliceblue;
+padding: 20px;
+border: 2px solid black;
+}
+.show-more-button{
+background-color: #a52a2a;
+color: aliceblue;
+border: 'none';
+padding: '8px 16px';
+font-Size: '14px';
+cursor: 'pointer';
+margin-bottom: 20px;
+}
+.filmFlix-heading{
+  background: rgb(0,0,0);
+  background: linear-gradient(90deg, rgba(0,0,0,1) 22%, rgba(165,42,42,1) 100%);
+  color: white;
+  /* width: 250px; */
+  margin: auto;
+  padding: 40px;
+  margin-bottom: 30px;
+}
+/* home.css style ends  here */
+
+
+/* MovieDetail.css style starts here */
+
+.movie-detail {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-color: #141414;
+  color: #ffffff;
+}
+
+.movie-info {
+  display: flex;
+  align-items: flex-start;
+}
+
+.movie-image img {
+  width: 300px;
+  height: auto;
+}
+
+.movie-details {
+  margin-left: 20px;
+}
+
+.movie-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.movie-metadata {
+  margin-bottom: 10px;
+}
+
+.metadata-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.metadata-label {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.metadata-value {
+  margin-right: 10px;
+}
+
+.summary {
+  margin-bottom: 20px;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+}
+
+.play-button {
+  padding: 10px 20px;
+  margin-right: 10px;
+  background-color: #e50914;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.add-to-favorites {
+  padding: 10px 20px;
+  background-color: #ffffff;
+  color: #e50914;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.add-to-favorites:hover {
+  background-color: #e50914;
+  color: #ffffff;
+}
+/* MovieDetail.css style ends here */

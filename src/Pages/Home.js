@@ -1,50 +1,41 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
-import MovieCard from "../Components/MovieCard";
+import React, { useContext } from 'react';
+import { MovieContext } from '../context/MovieContext';
+import MovieCard from '../Components/MovieCard';
+import LatestEpisodesCarousel from '../Components/Slides';
 
-const api = "https://api.tvmaze.com/shows"
+const Home = () => {
+  const { categorizedShows, showAllGenres, handleShowMore } = useContext(MovieContext);
 
-
-export default function Home() {
-  const [shows, setShows] = useState([]);
-  const fetchData = () =>{
-    axios
-    .get(api)
-    .then((response) => {
-      setShows(response.data);
-    })
-    .catch((error) => {
-      console.error("Error fetching data:", error);
-    });
-  }
-  useEffect(() => {
-    fetchData()
-  },[]);
-
-  const categorizedShows = {};
-
-  shows.forEach((show) => {
-    show.genres.forEach((genre) => {
-      if (!categorizedShows[genre]) {
-        categorizedShows[genre] = [];
-      }
-      categorizedShows[genre].push(show);
-    });
-  });
-
-  console.log(categorizedShows,'categorizedShows');
   return (
+    <>
+    
+    <LatestEpisodesCarousel/>
+   
+   
     <div>
-      {Object.entries(categorizedShows).map(([genre, shows]) => (
-        <div key={genre}>
-          <h2>{genre}</h2>
-          <div>
-            {shows.map((show) => (
-              <MovieCard key={show.id} movie={show} />
-            ))}
+      {Object.entries(categorizedShows).map(([genre, shows]) => {
+        const displayShows = showAllGenres[genre] ? shows : shows.slice(0, 8);
+        const showButton = shows.length > 8 && !showAllGenres[genre];
+
+        return (
+          <div key={genre}>
+            <h2 className="genre-heading">{genre}</h2>
+            <div style={{ display: 'flex', flexWrap: 'wrap', margin: '2rem', justifyContent: 'space-evenly' }}>
+              {displayShows.map((show) => (
+                <MovieCard key={show.id} movie={show} />
+              ))}
+            </div>
+            {showButton && (
+              <button className="show-more-button" onClick={() => handleShowMore(genre)}>
+                Show More
+              </button>
+            )}
           </div>
-        </div>
-      ))}
+        );
+      })}
     </div>
+    </>
   );
-}
+};
+
+export default Home;
