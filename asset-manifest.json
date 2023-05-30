@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/FilmFlix/static/css/main.756af292.css",
-    "main.js": "/FilmFlix/static/js/main.e2fb7456.js",
+    "main.css": "/FilmFlix/static/css/main.5fa41aa6.css",
+    "main.js": "/FilmFlix/static/js/main.ae68de43.js",
     "index.html": "/FilmFlix/index.html",
-    "main.756af292.css.map": "/FilmFlix/static/css/main.756af292.css.map",
-    "main.e2fb7456.js.map": "/FilmFlix/static/js/main.e2fb7456.js.map"
+    "main.5fa41aa6.css.map": "/FilmFlix/static/css/main.5fa41aa6.css.map",
+    "main.ae68de43.js.map": "/FilmFlix/static/js/main.ae68de43.js.map"
   },
   "entrypoints": [
-    "static/css/main.756af292.css",
-    "static/js/main.e2fb7456.js"
+    "static/css/main.5fa41aa6.css",
+    "static/js/main.ae68de43.js"
   ]
 }
