@@ -30,12 +30,12 @@ const Navbar = () => {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
               <li className="nav-item">
-                <Link to='/FilmFlix' className="nav-link" style={{ color: "white" }}>
+                <Link to='/' className="nav-link" style={{ color: "white" }}>
                   Home
                 </Link>
               </li>
               <li className="nav-item">
-              <Link to='/FilmFlix' className="nav-link" style={{ color: "white" }}>
+              <Link to='/' className="nav-link" style={{ color: "white" }}>
                   All Shows
                 </Link>
               </li>
