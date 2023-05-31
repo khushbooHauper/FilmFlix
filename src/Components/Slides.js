@@ -8,18 +8,20 @@ const LatestEpisodesCarousel = () => {
       id="latestEpisodesCarousel"
       className="carousel slide"
       data-bs-ride="carousel"
+      
     >
       <div className="carousel-inner">
         {shows && shows.map((episode, index) => (
           <div
-            className={`carousel-item ${index === 0 ? "active" : ""}`}
+            className={`carousel-item ${index === 0 ? "active " : ""} align-items-center`}
             key={episode.id}
           >
             <img
               src={episode.image.original}
               className="d-block w-100"
               alt={episode.name}
-              style={{ maxHeight: "400px" ,objectFit: "cover"}}
+              style={{ height: "470px",objectFit:"cover"}}
+             
             />
             <div className="carousel-caption">
               <h1 style={{color:'#a52a2a'}}>{episode.name}</h1>

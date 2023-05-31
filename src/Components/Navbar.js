@@ -13,8 +13,8 @@ const Navbar = () => {
     <div style={{ position: "sticky", top: 0, zIndex: 100 ,background:'#a52a2a',color:'#e50914',fontSize:'18px'}}>
       <nav className="navbar navbar-expand-lg bg-body-tertiary navbar-light">
         <div className="container-fluid">
-          <a className="navbar-brand" href="#">
-          FilmFlix
+          <a className="navbar-brand" href="#" style={{ color: "white" }}>
+          <h1>FilmFlix</h1>
           </a>
           <button
             className="navbar-toggler"
@@ -30,12 +30,12 @@ const Navbar = () => {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
               <li className="nav-item">
-                <Link to='/' className="nav-link">
+                <Link to='/FilmFlix' className="nav-link" style={{ color: "white" }}>
                   Home
                 </Link>
               </li>
               <li className="nav-item">
-              <Link to='/' className="nav-link">
+              <Link to='/FilmFlix' className="nav-link" style={{ color: "white" }}>
                   All Shows
                 </Link>
               </li>
@@ -43,6 +43,7 @@ const Navbar = () => {
                 <Link
                   to="#"
                   className="nav-link"
+                  style={{ color: "white" }}
                   data-bs-toggle="offcanvas"
                   data-bs-target="#offcanvasRight"
                   onClick={openSidebar}

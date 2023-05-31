@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { MovieContext } from '../context/MovieContext';
 
-const AddToFavorites = ({ movie }) => {
+const AddToFavorites = ({ movie,className  }) => {
   const { favorites, addToFavorites, removeFromFavorites } = useContext(MovieContext);
 
   const isFavorite = favorites.includes(movie.id);
@@ -15,7 +15,7 @@ const AddToFavorites = ({ movie }) => {
   };
 console.log(isFavorite)
   return (
-    <button className="add-to-favorites" onClick={handleToggleFavorite}>
+    <button  className={`add-to-favorites ${className}`} onClick={handleToggleFavorite}>
       {isFavorite ? 'Remove from Favorites' : 'Add to Favorites'}
     </button>
   );

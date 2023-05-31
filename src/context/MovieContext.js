@@ -9,7 +9,7 @@ const MovieContextProvider = ({ children }) => {
   const [showAllGenres, setShowAllGenres] = useState({});
   const [favorites, setFavorites] = useState([]);
   const [newReleased, setNewReleased] = useState([]);
-
+ 
   useEffect(() => {
     const fetchNewReleasedShows = async () => {
       try {
@@ -67,8 +67,7 @@ const MovieContextProvider = ({ children }) => {
     setFavorites((prevFavorites) => prevFavorites.filter((id) => id !== movieId));
   };
  
-
-  
+ 
   return (
     <MovieContext.Provider value={{ shows, categorizedShows, showAllGenres, handleShowMore ,favorites, addToFavorites, removeFromFavorites ,newReleased}}>
       {children}
