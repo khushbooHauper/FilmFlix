@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useRef } from "react";
 import { MovieContext } from "../context/MovieContext";
 
 const LatestEpisodesCarousel = () => {
-  const { newReleased } = useContext(MovieContext);
+  const { shows } = useContext(MovieContext);
   return (
     <div
       id="latestEpisodesCarousel"
@@ -10,7 +10,7 @@ const LatestEpisodesCarousel = () => {
       data-bs-ride="carousel"
     >
       <div className="carousel-inner">
-        {newReleased.map((episode, index) => (
+        {shows && shows.map((episode, index) => (
           <div
             className={`carousel-item ${index === 0 ? "active" : ""}`}
             key={episode.id}
