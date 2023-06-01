@@ -58,7 +58,7 @@ const MovieDetail = () => {
             <div className="metadata-item">
               <div className="metadata-label">Cast:</div>
               <div className="metadata-value">
-                {cast &&
+                {cast &&  cast.length > 0 && 
                   cast
                     .slice(0, 3)
                     .map((member, index) => (

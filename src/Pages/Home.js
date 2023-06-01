@@ -27,8 +27,10 @@ const Home = () => {
 
       <div>
         {Object.entries(categorizedShows).map(([genre, shows]) => {
-          const displayShows = showAllGenres[genre] ? shows : shows.slice(0, 20);
-          const showButton = shows.length > 20 && !showAllGenres[genre];
+          const displayShows = showAllGenres[genre]
+            ? shows
+            : shows.slice(0, 18);
+          const showButton = shows.length > 18 && !showAllGenres[genre];
 
           return (
             <div key={genre}>

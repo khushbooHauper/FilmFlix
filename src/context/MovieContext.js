@@ -1,29 +1,50 @@
 import React, { createContext, useEffect, useState } from 'react';
 import axios from 'axios';
+import { debounce } from 'lodash';
+import { useNavigate } from 'react-router-dom';
 
 const MovieContext = createContext();
 
 const MovieContextProvider = ({ children }) => {
+ const navigate = useNavigate()
   const [shows, setShows] = useState([]);
   const [categorizedShows, setCategorizedShows] = useState({});
   const [showAllGenres, setShowAllGenres] = useState({});
   const [favorites, setFavorites] = useState([]);
-  const [newReleased, setNewReleased] = useState([]);
- 
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
   useEffect(() => {
-    const fetchNewReleasedShows = async () => {
-      try {
-        const currentDate = new Date().toISOString().slice(0, 10);
-        const response = await axios.get(`https://api.tvmaze.com/schedule?date=${currentDate}`);
-        const newReleasedShowsData = response.data.map((item) => item.show);
-        setNewReleased(newReleasedShowsData);
-      } catch (error) {
-        console.log("Error fetching new released shows:", error);
+    const fetchData = async () => {
+      if (searchQuery.trim() === '') {
+        setSearchResults([]);
+        navigate('/')
+      } else {
+        try {
+          const response = await axios.get(`https://api.tvmaze.com/search/shows?q=${searchQuery}`);
+          setSearchResults(response.data);
+        } catch (error) {
+          console.log('An error occurred while fetching data:', error);
+        }
       }
     };
 
-    fetchNewReleasedShows();
-  }, []);
+    const delayedFetchData = debounce(fetchData, 1000);
+    delayedFetchData();
+
+    return () => {
+      delayedFetchData.cancel();
+    };
+  }, [searchQuery, setSearchResults]);
+
+  const handleSearchChange = (event) => {
+    const { value } = event.target;
+    setSearchQuery(value);
+  };
+  const handleClearSearch = () => {
+    setSearchQuery('');
+    setSearchResults([]);
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -58,8 +79,8 @@ const MovieContextProvider = ({ children }) => {
       [genre]: true,
     }));
   };
-  const addToFavorites = (movieId) => {
-    setFavorites((prevFavorites) => [...prevFavorites, movieId]);
+  const addToFavorites = (movie) => {
+    setFavorites((prevFavorites) => [...prevFavorites, movie]);
   };
 
   // Function to remove a movie from favorites
@@ -69,7 +90,7 @@ const MovieContextProvider = ({ children }) => {
  
  
   return (
-    <MovieContext.Provider value={{ shows, categorizedShows, showAllGenres, handleShowMore ,favorites, addToFavorites, removeFromFavorites ,newReleased}}>
+    <MovieContext.Provider value={{ shows, categorizedShows, showAllGenres, handleShowMore ,favorites, addToFavorites, removeFromFavorites,searchResults,handleSearchChange,handleClearSearch,searchQuery,setSearchQuery,setSearchResults}}>
       {children}
     </MovieContext.Provider>
   );

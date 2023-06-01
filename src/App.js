@@ -1,23 +1,19 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import './App.css';
-import { MovieContextProvider } from './context/MovieContext';
-import MovieDetail from './Components/MovieDetail';
-import Home from './Pages/Home';
-import Navbar from './Components/Navbar';
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import "./App.css";
+import MovieDetail from "./Components/MovieDetail";
+import Home from "./Pages/Home";
+import Navbar from "./Components/Navbar";
+import SearchMovieDetails from "./Components/SearchMovieDetails";
 
 function App() {
   return (
     <div className="App">
-      <MovieContextProvider>
-        <Router>
-        <Navbar/>
-          <Routes>
-            <Route exact path="/" element={<Home />} />
-            <Route path="/movie/:id" element={<MovieDetail />} />
-            </Routes>
-        </Router>
-      </MovieContextProvider>
+      <Routes>
+        <Route exact path="/" element={<Home />} />
+        <Route path="/movie/:id" element={<MovieDetail />} />
+        <Route path="/serachmovie/:id" element={<SearchMovieDetails />} />
+      </Routes>
     </div>
   );
 }
